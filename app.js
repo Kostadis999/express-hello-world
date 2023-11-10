@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
 const path = require("path");
-app.use(express.static(path.join(__dirname, 'css')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.get('/style.css', function(req, res) {
   res.sendFile(__dirname + "/css/" + "styles.css");
 });
