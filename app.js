@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
 const path = require("path");
-app.use(express.static(__dirname + "/css"));
+app.use(express.static(path.join(__dirname, 'css')));
 app.get('/style.css', function(req, res) {
   res.sendFile(__dirname + "/css/" + "styles.css");
 });
@@ -13,7 +13,7 @@ app.get("/health", (req, res) => {
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '/index.html'));
+  res.sendFile(path.join(__dirname, 'css' ,'/index.html'));
 });
 
 server.keepAliveTimeout = 120 * 1000;
