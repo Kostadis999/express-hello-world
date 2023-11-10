@@ -2,9 +2,13 @@ const express = require("express");
 const app = express();
 const { Pool } = require('pg');
 const fetch = require('node-fetch');
+const ejs = require('ejs');
+
 
 const port = process.env.PORT || 3001;
 const path = require("path");
+
+app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/style.css', function(req, res) {
   res.sendFile(__dirname + "/css/" + "styles.css");
@@ -15,8 +19,8 @@ app.get("/health", (req, res) => {
 }); 
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
-app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'views' ,'/index.html'));
+app.get('/', (req, res) => {
+  res.render('index'); // Render the 'index.ejs' file
 });
 
 app.get('/', async (req, res) => {
