@@ -16,6 +16,13 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, 'public', 'views' ,'/index.html'));
 });
 
+const PORT = process.env.PORT || 3000;
+const DATABASE_URL = process.env.DATABASE_URL;
+
+const pool = new Pool({
+  connectionString: DATABASE_URL,
+});
+
 server.keepAliveTimeout = 120 * 1000;
 server.headersTimeout = 120 * 1000;
 
