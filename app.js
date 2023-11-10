@@ -19,6 +19,19 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, 'public', 'views' ,'/index.html'));
 });
 
+app.get('/', async (req, res) => {
+  try {
+    
+    const client = await pool.connect();
+    const Result = await client.query('SELECT * FROM my_activities');
+    const data = Result.rows;
+    res.render('index', { data });
+    client.release();
+  } catch (error) {
+    res.status(500).json({ status: 'error', message: error.message });
+  }
+});
+
 const PORT = process.env.PORT || 3000;
 const DATABASE_URL = process.env.DATABASE_URL;
 
