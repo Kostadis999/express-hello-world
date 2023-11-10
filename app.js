@@ -8,8 +8,14 @@ const ejs = require('ejs');
 const port = process.env.PORT || 3001;
 const path = require("path");
 
+// Set the views directory to "public/views"
+app.set('views', path.join(__dirname, 'public', 'views'));
+
+// Set EJS as the view engine
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
+
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get("/health", (req, res) => { 
   res.sendStatus(200); 
