@@ -13,7 +13,7 @@ app.get("/health", (req, res) => {
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, 'css', 'views' ,'/index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'views' ,'/index.html'));
 });
 
 server.keepAliveTimeout = 120 * 1000;
