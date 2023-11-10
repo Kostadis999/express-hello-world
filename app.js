@@ -10,9 +10,6 @@ const path = require("path");
 
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
-app.get('/style.css', function(req, res) {
-  res.sendFile(__dirname + "/css/" + "styles.css");
-});
 
 app.get("/health", (req, res) => { 
   res.sendStatus(200); 
