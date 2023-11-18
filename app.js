@@ -26,6 +26,10 @@ app.get('/', (req, res) => {
   res.render('index'); // Render the 'index.ejs' file
 });
 
+app.get('/services', (req, res) => {
+  res.render('services'); // Render the 'index.ejs' file
+});
+
 app.get('/', async (req, res) => {
   try {
     
